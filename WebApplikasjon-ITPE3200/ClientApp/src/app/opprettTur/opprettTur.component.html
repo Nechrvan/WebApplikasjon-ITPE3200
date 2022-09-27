@@ -1,0 +1,51 @@
+<body id="lagreBody">
+  <div class="formContainer">
+    <div class="col-md-12">
+       <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+           <div class="formContainer">
+                <div class="stationGroup">
+                  <div class="inputBox">
+                    <div>Startstasjon</div>
+                    <input type="text" id="startstasjonAdmin" class="form-control" onchange="validerStartStasjonAdmin(this.value)" /> <br />
+                  </div>
+                  <div class="inputBox">
+                    <div>Endestasjon</div>
+                    <input type="text" id="endestasjonAdmin" class="form-control" onchange="validerEndeStasjonAdmin(this.value)" /> <br />
+                  </div>
+                </div>
+                <div class="stationGroup">
+                  <div class="inputBox">
+                    <div>Dato (DD/MM/ÅÅÅÅ)</div>
+                    <input type="text" id="datoAdmin" class="form-control" onchange="validerDatoAdmin(this.value)" /> <br />
+                  </div>
+                  <div class="inputBox">
+                    <div>Tid</div>
+                    <input type="text" id="tidAdmin" class="form-control" onchange="validerTidAdmin(this.value)" /> <br />
+
+                  </div>
+                </div>
+                <div class="stationGroup">
+                  <div class="inputBox">
+                    <div>Barnepris</div>
+                    <input type="text" id="barnePrisAdmin" class="form-control" onchange="validerBarnePrisAdmin(this.value)" /> <br />
+                  </div>
+                  <div class="inputBox">
+                    <div>Voksenpris</div>
+                    <input type="text" id="voksenPrisAdmin" class="form-control" onchange="validerVoksenPrisAdmin(this.value)" /> <br />
+                  </div>
+                </div>
+                             
+                <div class="stationGroup">
+                     <div class="buttons">
+                       <input type="button" class="btn btn-primary" id="reg" value="Opprett tur" onclick="validerOgLagTur()" />
+                       <a href="index.html" id="avbryt" class="btn btn-primary">Avbryt</a>
+                     </div>
+
+                 </div>
+            </div>
+
+        </form>
+    </div>
+  </div>
+
+</body>

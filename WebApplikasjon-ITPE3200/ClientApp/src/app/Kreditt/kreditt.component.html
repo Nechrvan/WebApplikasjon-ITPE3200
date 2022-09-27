@@ -1,0 +1,40 @@
+<body id="lagreBody">
+  <div class="formContainer" id="kredittForm">
+    <div class="col-md-12">
+      <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+        <div class="stationGroup">
+          <div class="inputBox">
+            <label>Kortnummer</label>
+            <input class="form-control" formControlKortnummer="kortnummerr" />
+            <p class="alert alert-warning" [hidden]="skjema.controls.kortnummerr.valid || (skjema.controls.etternavn.pristine && !submitted)">
+              Kortnummerr er obligatorisk.
+            </p>
+          </div>
+        </div>
+
+        <div class="stationGroup">
+          <div class="inputBox">
+
+            <label>Cvc</label>
+            <input class="form-control" formControlcvc="cvc" />
+            <p class="alert alert-warning" [hidden]="skjema.controls.cvc.valid || (skjema.controls.cvc.pristine && !submitted)">
+              Cvc er obligatorisk.
+            </p>
+          </div>
+          <div class="inputBox">
+            <label>Utlopsdato</label>
+            <input class="form-control" formControlUtlopsDato="utlopsDato" />
+            <p class="alert alert-warning" [hidden]="skjema.controls.utlopsDato.valid || (skjema.controls.utlopsDato.pristine && !submitted)">
+              UtlopsDato er obligatorisk
+            </p>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Fullfør Kjøp</button>
+          <a href="index.html" class="btn btn-danger">Avbryt</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

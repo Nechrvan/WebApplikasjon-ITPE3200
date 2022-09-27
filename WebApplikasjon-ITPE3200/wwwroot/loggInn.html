@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Logg Inn(Admin)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <script src="/js/validering.js"></script>
+    <script src="/js/loggInn.js"></script>
+    <link rel="stylesheet" href="Stylling.css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-white bg-white">
+            <a class="navbar-brand" href="index.html">
+                <img class="bilde" src="social.png" alt="Båt Tur logo">
+            </a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <br />
+                <form class="form">
+                    <div class="form-group">
+                        <label for="brukernavn">Brukernavn</label>
+                        <input type="text" id="brukernavn" class="form-control" onchange="validerBrukernavn(this.value)" />
+                        <span id="feilBrukernavn" style="color: red"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="passord">Passord</label>
+                        <input type="password" id="passord" class="form-control" onchange="validerPassord(this.value)" />
+                        <span id="feilPassord" style="color: red"></span>
+                    </div>
+                </form>
+
+                <input type="button" class="btn btn-primary" id="reg" value="Logg inn" onclick="loggInn()" />
+                <a href="index.html" class="btn btn-success">Tilbake til forsiden</a>
+                <div id="feil" style="color: red"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Webapplikasjoner-Gruppe-ITPE3200-2021</div>
+</body>
+</html>

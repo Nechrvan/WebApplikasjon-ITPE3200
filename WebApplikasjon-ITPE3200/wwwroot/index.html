@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Båt Tur</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+    <script src="js/validering.js"></script>
+    <link rel="stylesheet" href="Stylling.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-white bg-white">
+            <a class="navbar-brand" href="index.html">
+                <img class="bilde" src="social.png" alt="Båt Tur logo">
+            </a>
+
+            <a href="loggInn.html" id="logo" class="btn btn-outline-secondary btn-lg pull-lg-right">Logg Inn(Admin)</a>
+
+        </nav>
+    </header>
+
+    <div class="view">
+        <div class="container-sm bg- w-15">
+            <div class="row">
+                <div class="col-md-10 mx-auto">
+                    <form>
+                        <div class="form-group row">
+                            <div class="col-sm-12 ">
+                                <br />
+                                <h4 class="text-white">Start din bestilling her:</h4>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 ">
+                                <label class="label">Billet Type: </label>
+                                <div class="checkbox checkboxTicketType">
+                                    <div>
+                                        <input type="radio" id="turRetur" value="Retur" name="turType" onclick="onTicketTypeChange()" />
+                                        <label class="label" for="turRetur">Tur/Retur</label>
+
+                                        <input type="radio" id="single" value="En vei" name="turType" checked="checked" onclick="onTicketTypeChange()" />
+                                        <label class="label" for="single">En vei </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 ">
+                                <label class="label" for="avgang">Avgangsdato:</label>
+                                <input type="date" id="avgang" onchange="onAvgangChange()" onkeydown="return false" />
+                            </div>
+                            <div class="col-sm-6 ">
+                                <label class="label" for="retur" id="returLabel">Returdato : </label>
+                                <input type="date" id="retur" onkeydown="return false" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 ">
+                                <label class="label">Klasset: </label>
+                                <div class="checkbox">
+                                    <div>
+                                        <input type="radio" id="economy" value="Economy" name="klasset" checked="checked" />
+                                        <label class="label" for="economy">Økonomi</label>
+
+                                        <input type="radio" id="business" value="Business" name="klasset" />
+                                        <label class="label" for="business">Business</label>
+
+                                        <input type="radio" id="first_Class" value="Førsteklasse" name="klasset" />
+                                        <label class="label" for="first_Class">Første klasse</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 ">
+                                <label class="label" for="startstasjon">Jeg reiser fra:  </label>
+                                <div id="startstasjon" class="dropdown" onchange="validerStartstasjon()"></div>
+                                <span id="feilStartstasjon" style="color: red"></span>
+                            </div>
+                            <div class="col-sm-6 ">
+                                <div id="endestasjon" class="dropdown" onchange="validerEndestasjon()"> </div>
+                                <span id="feilEndestasjon" style="color: red"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 ">
+                                <div id="tid" class="dropdown" onchange="validerTid()"></div>
+                                <span id="feilTid" style="color: red"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 ">
+                                <label class="label">Fornavn</label>
+                                <input type="text" id="fornavn" class="form-control" onchange="validerFornavn(this.value)" /> <br />
+                                <span id="feilFornavn" style="color: red"></span>
+                            </div>
+                            <div class="col-sm-6 ">
+                                <label class="label">Etternavn</label>
+                                <input type="text" id="etternavn" class="form-control" onchange="validerEtternavn(this.value)" /> <br />
+                                <span id="feilEtternavn" style="color: red"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 ">
+                                <label class="label">Telefonnummer</label>
+                                <input type="text" id="telefonnummer" class="form-control" onchange="validerTelefonnummer(this.value)" /> <br />
+                                <span id="feilTelefonnummer" style="color: red"></span>
+                            </div>
+                            <div class="col-sm-6 ">
+                                <label class="label">E-post</label>
+                                <input type="text" id="epost" class="form-control" onchange="validerEpost(this.value)" /> <br />
+                                <span id="feilEpost" style="color: red"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 ">
+                                <span class="label">Adresse</span>
+                                <input type="text" id="adresse" class="form-control" onchange="validerAdresse(this.value)" />
+                                <span id="feilAdresse" style="color: red"></span>
+                            </div>
+                            <div class="col-sm-6 ">
+                                <span class="label">Postnummer</span>
+                                <input type="text" id="postnummer" class="form-control" onchange="validerPostnummer(this.value)" />
+                                <span id="feilPostnummer" style="color: red"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 ">
+                                <span class="label">Poststed</span>
+                                <input type="text" id="poststed" class="form-control" onchange="validerPoststed(this.value)" />
+                                <span id="feilPoststed" style="color: red"></span>
+                            </div>
+                            <div class="col-sm-6 ">
+                                <label class="label">Antall voksne</label>
+                                <input type="number" min="0" id="antallVoksne" class="form-control" onkeyup="beregnOgValiderVoksen()" /> <br />
+                                <inline id="voksenPris"></inline>
+                                <span id="feilAntallVoksne" style="color: red"></span>
+                                <div class="text-white" id="prisBarn"></div>
+                                <div class="text-white" id="prisVoksen"></div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 ">
+                                <label class="label">Antall barn</label>
+                                <input type="number" min="0" id="antallBarn" class="form-control" onchange="beregnOgValiderBarn()" /> <br />
+                                <inline id="barnePris"></inline>
+                                <span id="feilAntallBarn" style="color: red"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="button" class="btn btn-primary" id="reg" value="Bestill" onclick="validerOgLagBestilling()" />
+                        </div>
+                        <div id="feil" style="color: red"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Modal / Pop-up -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog ">
+
+                <!-- Modal/ Pop-up innhold-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Bestilling</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="innhold"></div>
+                        <div id="bekreftBestilling"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="">Avbryt</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="lagreBestilling()">Bekreft</button>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

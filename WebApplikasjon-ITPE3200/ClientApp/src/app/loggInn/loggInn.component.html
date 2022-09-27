@@ -1,0 +1,38 @@
+<div class="container">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form">
+
+    <mat-form-field floatLabel="never" class="form-element">
+      <input type="text" matInput placeholder="Brukernavn" formControlName="brukernavn">
+      <mat-error *ngIf="formGroup.controls['brukernavn'].invalid">
+        {{getError('brukernavn')}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="never" class="form-element">
+      <input type="password" matInput placeholder="Passord" formControlName="passord">
+      <mat-error *ngIf="!formGroup.controls['passord'].valid">
+        {{getError('passord')}}
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-element">
+      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Logg Inn</button>
+    </div>
+
+  </form>
+</div>
+<!--
+<form class=" container">
+  <div class="form-group">
+    <label for=" InputBrukernavn"> Bruker Navn</label>
+    <input type=" brukernavn" class=" form-control" name="brukernavn" [(ngModel)]="brukernavn" />
+
+  </div>
+  <div class="form-group">
+    <label for=" InputPassword"> Password</label>
+    <input type=" password" class=" form-control" name="password" [(ngModel)]="password" />
+
+  </div>
+  <button type=" submit" class=" btn-primary">Submit</button>
+</form>
+  -->
